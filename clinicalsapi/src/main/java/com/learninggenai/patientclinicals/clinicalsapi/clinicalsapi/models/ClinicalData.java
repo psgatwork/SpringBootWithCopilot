@@ -11,6 +11,8 @@ import jakarta.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.sql.Timestamp;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "clinicaldata")
 public class ClinicalData {
@@ -21,11 +23,20 @@ public class ClinicalData {
     
     private String componentName;
     private String componentValue;
+    @CreationTimestamp
     private Timestamp measuredDateTime;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", nullable = false)
     @JsonIgnore
     private Patient patient;
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     // Getters and Setters
     public Long getId() {

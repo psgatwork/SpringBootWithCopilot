@@ -1,7 +1,11 @@
 package com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.controllers;
 
+import com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.dto.ClinicalDataRequest;
 import com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.models.ClinicalData;
+import com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.models.Patient;
 import com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.repos.ClinicalDataRepository;
+import com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.repos.PatientRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +19,11 @@ public class ClinicalDataController {
 
     @Autowired
     private ClinicalDataRepository clinicalDataRepository;
+
+    @Autowired
+    private PatientRepository patientRepository;
+
+    private Patient patient;
 
     // Create a new clinical data entry
     @PostMapping
@@ -67,4 +76,18 @@ public class ClinicalDataController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // method that receives patient id,clinical data and saves it to the database
+    @PostMapping("/patients/{id}")
+    public ClinicalData saveClinicalData(@RequestBody ClinicalDataRequest request){
+        ClinicalData clinicalData = new ClinicalData();
+        clinicalData.setComponentName(request.getComponentName());
+        clinicalData.setComponentValue(request.getComponentValue());
+
+        Patient patient = patientRepository.findById(request.getPatientId()).get();
+        clinicalData.setPatient(patient);
+        
+        return clinicalDataRepository.save(clinicalData);
+    }
+
 }
