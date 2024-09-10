@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/clinicaldata")
+@RequestMapping("/clinicaldata")
 public class ClinicalDataController {
 
     @Autowired
@@ -86,7 +86,7 @@ public class ClinicalDataController {
 
         Patient patient = patientRepository.findById(request.getPatientId()).get();
         clinicalData.setPatient(patient);
-        
+
         return clinicalDataRepository.save(clinicalData);
     }
 
