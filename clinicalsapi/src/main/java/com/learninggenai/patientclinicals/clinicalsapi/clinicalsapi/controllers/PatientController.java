@@ -1,7 +1,7 @@
-package main.java.com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.controllers;
+package com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.controllers;
 
-import main.java.com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.models.Patient;
-import main.java.com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.repos.PatientRepository;
+import com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.models.Patient;
+import com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.repos.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,9 +45,9 @@ public class PatientController {
         Optional<Patient> patient = patientRepository.findById(id);
         if (patient.isPresent()) {
             Patient existingPatient = patient.get();
-            existingPatient.setName(patientDetails.getName());
+            existingPatient.setFirstName(patientDetails.getFirstName());
+            existingPatient.setLastName(patientDetails.getLastName());
             existingPatient.setAge(patientDetails.getAge());
-            existingPatient.setGender(patientDetails.getGender());
             // Update other fields as necessary
             Patient updatedPatient = patientRepository.save(existingPatient);
             return ResponseEntity.ok(updatedPatient);

@@ -1,7 +1,7 @@
-package main.java.com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.controllers;
+package com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.controllers;
 
-import main.java.com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.models.ClinicalData;
-import main.java.com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.repos.ClinicalDataRepository;
+import com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.models.ClinicalData;
+import com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.repos.ClinicalDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

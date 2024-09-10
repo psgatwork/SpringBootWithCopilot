@@ -1,8 +1,14 @@
-package main.java.com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.models;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package com.learninggenai.patientclinicals.clinicalsapi.clinicalsapi.models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.sql.Timestamp;
 
 @Entity
