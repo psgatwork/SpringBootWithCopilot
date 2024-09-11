@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/patients")
+@CrossOrigin(origins = "*")
 public class PatientController {
 
     private static final Logger logger = LoggerFactory.getLogger(PatientController.class);
